@@ -7,8 +7,10 @@
     </header>
 
     <ul>
-        <li>
-            <app-wish />
-        </li>
+        @for(wish of selectedUserWishes; track wish.id){
+            <li>
+                <app-wish />
+            </li>
+        }
     </ul>
 </section>
