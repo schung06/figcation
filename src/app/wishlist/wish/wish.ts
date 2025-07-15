@@ -1,5 +1,14 @@
 import { Component, Input } from '@angular/core';
 
+interface Wish{
+    id: string;
+    userId: string;
+    title: string;
+    summary: string;
+    dueDate: string;
+
+}
+
 @Component({
     selector: 'app-wish',
     standalone: true, 
@@ -9,5 +18,5 @@ import { Component, Input } from '@angular/core';
 })
 
 export class WishComponent {
-    
+    @Input({required: true}) wish!: Wish;
 }

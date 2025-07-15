@@ -9,7 +9,7 @@
     <ul>
         @for(wish of selectedUserWishes; track wish.id){
             <li>
-                <app-wish />
+                <app-wish [wish]="wish" />
             </li>
         }
     </ul>
