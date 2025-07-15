@@ -44,4 +44,8 @@ export class WishlistComponent {
   get selectedUserWishes() {
     return this.wishes.filter((wish) =>  wish.userId === this.userId);
   }
+
+  onCompleteWish(id: string) {
+    this.wishes = this.wishes.filter((wish) => wish.id !== id);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { type Wish } from './wish.model'; 
 
@@ -11,5 +11,10 @@ import { type Wish } from './wish.model';
 })
 
 export class WishComponent {
-    @Input({required: true}) wish!: Wish;
+    @Input({ required: true }) wish!: Wish;
+    @Output() complete = new EventEmitter<string>();
+
+    onCompleteWish() {
+        this.complete.emit(this.wish.id);
+    }
 }
