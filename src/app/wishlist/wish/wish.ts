@@ -1,13 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-interface Wish{
-    id: string;
-    userId: string;
-    title: string;
-    summary: string;
-    dueDate: string;
-
-}
+import { type Wish } from './wish.model'; 
 
 @Component({
     selector: 'app-wish',
