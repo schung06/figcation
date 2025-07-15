@@ -54,4 +54,8 @@ export class WishlistComponent {
   onStartAddWish() {
     this.isAddingWish = true;
   }
+
+  onCancelAddWish() {
+    this.isAddingWish = false;
+  }
 }

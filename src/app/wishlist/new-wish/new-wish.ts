@@ -9,5 +9,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 
 export class NewWishComponent {
+    @Output() cancel = new EventEmitter<void>();
     
+    onCancel() {
+        this.cancel.emit();
+    }
 }
