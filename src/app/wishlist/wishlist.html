@@ -1,5 +1,5 @@
 @if(isAddingWish){
-    <app-new-wish (cancel)="onCancelAddWish()"/>
+    <app-new-wish (cancel)="onCancelAddWish()" (add)="onAddWish($event)" />
 }
 
 <section id="wishlist">

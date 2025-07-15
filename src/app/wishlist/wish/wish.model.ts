@@ -6,3 +6,9 @@ export interface Wish{
     dueDate: string;
 
 }
+
+export interface NewWishData{
+    title: string;
+    summary: string;
+    date: string;
+}

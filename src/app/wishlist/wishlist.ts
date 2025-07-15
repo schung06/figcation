@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { WishComponent } from './wish/wish';
-import{ NewWishComponent } from './new-wish/new-wish';
+import { NewWishComponent } from './new-wish/new-wish';
+import { type NewWishData } from './wish/wish.model';
+import { takeLast } from 'rxjs';
 
 @Component({
     selector: 'app-wishlist',
@@ -56,6 +58,17 @@ export class WishlistComponent {
   }
 
   onCancelAddWish() {
+    this.isAddingWish = false;
+  }
+
+  onAddWish(wishData: NewWishData) {
+    this.wishes.unshift({
+      id: new Date().getTime().toString(),
+      userId: this.userId,
+      title: wishData.title,
+      summary: wishData.summary,
+      dueDate: wishData.date
+    })
     this.isAddingWish = false;
   }
 }
