@@ -1,17 +1,19 @@
 import { Component, Input } from '@angular/core';
 import { WishComponent } from './wish/wish';
+import{ NewWishComponent } from './new-wish/new-wish';
 
 @Component({
     selector: 'app-wishlist',
     standalone: true, 
     templateUrl: './wishlist.html',
     styleUrl: './wishlist.css',
-    imports: [WishComponent]
+    imports: [WishComponent, NewWishComponent]
 })
 
 export class WishlistComponent {
   @Input({required: true}) name!: string;
   @Input({required: true}) userId!: string;
+  isAddingWish = false;
 
     wishes = [
         {
@@ -47,5 +49,9 @@ export class WishlistComponent {
 
   onCompleteWish(id: string) {
     this.wishes = this.wishes.filter((wish) => wish.id !== id);
+  }
+
+  onStartAddWish() {
+    this.isAddingWish = true;
   }
 }
