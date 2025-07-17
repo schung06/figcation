@@ -31,6 +31,14 @@ export class WishlistService{
 
     ];
 
+    constructor() {
+        const wishes = localStorage.getItem('wishes');
+
+        if (wishes) {
+            this.wishes = JSON.parse(wishes);
+        }
+    } 
+
     getUserWishes(userId: string) {
         return this.wishes.filter((wish) =>  wish.userId === userId);
     }
@@ -42,11 +50,17 @@ export class WishlistService{
             title: wishData.title,
             summary: wishData.summary,
             dueDate: wishData.date
-        })
+        });
+        this.saveWishes();
     }
 
     removeWish(id: string) {
         this.wishes = this.wishes.filter((wish) => wish.id !== id);
+        this.saveWishes();
+    }
+
+    private saveWishes() {
+        localStorage.setItem('wishes', JSON.stringify(this.wishes));
     }
 
 }

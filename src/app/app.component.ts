@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-
-import { HeaderComponent } from './header/header';
-import { UserComponent } from './user/user';
 import { DUMMY_USERS } from './dummy-users';
-import { WishlistComponent } from './wishlist/wishlist';
+
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [HeaderComponent, UserComponent, WishlistComponent],
+  standalone: false,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
