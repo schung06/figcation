@@ -1,9 +1,11 @@
-<article>
-    <h2>{{wish.title}}</h2>
-    <time>{{wish.dueDate}}</time>
-    <p>{{wish.summary}}</p>
-    <p class="actions">
-        <button (click)="onCompleteWish()">Complete</button>
-    </p>
-</article>
+<app-card>
+    <article>
+        <h2>{{wish.title}}</h2>
+        <time>{{wish.dueDate}}</time>
+        <p>{{wish.summary}}</p>
+        <p class="actions">
+            <button (click)="onCompleteWish()">Complete</button>
+        </p>
+    </article>
+</app-card>
 

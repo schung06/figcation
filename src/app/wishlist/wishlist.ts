@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { WishComponent } from './wish/wish';
 import { NewWishComponent } from './new-wish/new-wish';
 import { type NewWishData } from './wish/wish.model';
-import { takeLast } from 'rxjs';
+
 
 @Component({
     selector: 'app-wishlist',
