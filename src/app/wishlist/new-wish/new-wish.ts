@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { type NewWishData } from '../wish/wish.model';
+import { WishlistService } from '../wishlist.service';
 
 @Component({
     selector: 'app-new-wish',
@@ -11,22 +12,25 @@ import { type NewWishData } from '../wish/wish.model';
 })
 
 export class NewWishComponent {
-    @Output() cancel = new EventEmitter<void>();
-    @Output() add = new EventEmitter <NewWishData>();
+    @Input({ required: true }) userId!: string;
+    @Output() close = new EventEmitter<void>();
     enteredTitle = ''; 
     enteredSummary = '';
     enteredDate = '';
+
+    private wishlistService = inject(WishlistService);
     
     onCancel() {
-        this.cancel.emit();
+        this.close.emit();
     }
 
     onSubmit() {
-        this.add.emit({
+        this.wishlistService.addWish({
             title: this.enteredTitle,
             summary: this.enteredSummary,
             date: this.enteredDate
-        });
+        }, this.userId);
+        this.close.emit();
     }
 }
 

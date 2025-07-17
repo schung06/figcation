@@ -1,7 +1,7 @@
 <app-card>
     <article>
         <h2>{{wish.title}}</h2>
-        <time>{{wish.dueDate}}</time>
+        <time>{{wish.dueDate | date:'fullDate'}}</time>
         <p>{{wish.summary}}</p>
         <p class="actions">
             <button (click)="onCompleteWish()">Complete</button>
