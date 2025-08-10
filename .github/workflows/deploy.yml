@@ -2,7 +2,7 @@ name: Deploy Angular app to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # change if your default branch is different
+    branches: ["main"] # or your default branch
   workflow_dispatch:
 
 permissions:
@@ -25,7 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 24.5.0
 
       - name: Install dependencies
         run: npm install
@@ -34,12 +34,12 @@ jobs:
         run: npm run build -- --configuration production --base-href "/figcation/"
 
       - name: Copy index.html to 404.html for SPA routing
-        run: cp dist/http/index.html dist/http/404.html
+        run: cp dist/http/browser/index.html dist/http/browser/404.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/http
+          path: dist/http/browser
 
   deploy:
     environment:
