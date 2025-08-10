@@ -26,9 +26,14 @@ export class AvailablePlacesComponent implements OnInit {
       .get<{ places: Place[] }>('http://localhost:3000/places')
       .pipe(
         map((resData) => resData.places),
-        catchError((error) =>
-          throwError(() => new Error('Something went wrong. Please try again later.'))
-        )
+        catchError((error) => {
+          return throwError(
+            () =>
+              new Error(
+                'Something went wrong. Please try again later.'
+              )
+          );
+        })
       )
       .subscribe({
         next: (places) => {
